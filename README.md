@@ -29,3 +29,4 @@ yarn add -D prettier
 ```
 
 - .prettierignore, .prettierrc 파일 추가
+- yarn add gray-matter (YAML Front Matter)
