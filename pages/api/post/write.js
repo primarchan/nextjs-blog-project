@@ -1,4 +1,4 @@
-import { createPost } from '../../lib/posts'
+import { createPost } from '../../../lib/posts'
 import { format } from 'date-fns'
 
 export default async function handler(req, res) {

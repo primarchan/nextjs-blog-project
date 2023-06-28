@@ -1,4 +1,5 @@
-import { useRef } from 'react'
+import Link from 'next/link'
+import { useRef, useState } from 'react'
 import Layout from '../../components/Layout'
 
 export default function Write() {
@@ -6,8 +7,11 @@ export default function Write() {
   const titleRef = useRef(undefined)
   const contentRef = useRef(undefined)
 
+  const [showLink, setShowLink] = useState(false)
+
   const handleSubmit = (event) => {
     event.preventDefault()
+
     const id = idRef.current.value
     const title = titleRef.current.value
     const content = contentRef.current.value
@@ -22,8 +26,17 @@ export default function Write() {
           content,
         }),
       })
-        .then((response) => response.json())
-        .then((data) => alert(data.message))
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          }
+          throw new Error('Fetch Error')
+        })
+        .then((data) => {
+          setShowLink(true)
+          alert(data.message)
+        })
+        .catch((error) => alert(`request error : ${error}`))
     }
   }
   return (
@@ -50,6 +63,11 @@ export default function Write() {
         <br />
         <input type="submit" value="Create" />
       </form>
+      {showLink && (
+        <Link href={`/posts/${idRef.current.value}`}>
+          <a>Created Post</a>
+        </Link>
+      )}
     </Layout>
   )
 }
