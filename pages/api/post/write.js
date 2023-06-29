@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       content,
     })
     res.status(200).json({ message: 'create success' })
-  } catch {
+  } catch (error) {
     res.status(500).json({ error: `create failed ${error}` })
   }
 }

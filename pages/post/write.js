@@ -1,7 +1,6 @@
-import Link from 'next/link'
-import { useRef, useState } from 'react'
 import Layout from '../../components/Layout'
-
+import { useRef, useState } from 'react'
+import Link from 'next/link'
 export default function Write() {
   const idRef = useRef(undefined)
   const titleRef = useRef(undefined)
@@ -9,7 +8,7 @@ export default function Write() {
 
   const [showLink, setShowLink] = useState(false)
 
-  const handleSubmit = (event) => {
+  const handleSumbit = (event) => {
     event.preventDefault()
 
     const id = idRef.current.value
@@ -36,13 +35,13 @@ export default function Write() {
           setShowLink(true)
           alert(data.message)
         })
-        .catch((error) => alert(`request error : ${error}`))
+        .catch((error) => alert(`request error: ${error}`))
     }
   }
   return (
     <Layout>
       <h1>Write a post</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSumbit}>
         <input type="text" name="id" placeholder="id" required ref={idRef} />
         <br />
         <input
