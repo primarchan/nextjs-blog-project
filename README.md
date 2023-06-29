@@ -32,3 +32,4 @@ yarn add -D prettier
 - yarn add gray-matter (YAML Front Matter)
 - yarn add remark remark-html
 - yarn add date-fns
+- yarn add next-mdx-remote react-syntax-highlighter
